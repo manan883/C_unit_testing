@@ -45,17 +45,22 @@ int reverse_words(const char *input, char *output, size_t out_size) {
   char *words[MAX_WORDS];
   int word_count = 0;
 
+  // split the input by space then append it to the array
   char *token = strtok(temp, " ");
   while (token != NULL && word_count < MAX_WORDS) {
     words[word_count++] = token;
     token = strtok(NULL, " ");
   }
 
+
+
+  //append to output again in the reverse order 
   size_t len = 0;
   output[0] = '\0';
 
   for (int i = word_count - 1; i >= 0; i--) {
     size_t wlen = strlen(words[i]);
+    //check to see if word can fit into buffer ternary goes len > 0 ? 1: 0 if len more than 0 then 1 else 0 
     if (len + wlen + (len > 0 ? 1 : 0) + 1 > out_size) {
         return 0;
     }
