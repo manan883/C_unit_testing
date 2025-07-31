@@ -33,12 +33,15 @@ void context_grep(int argc, char **argv, int context, char *expr){
 
 
 int reverse_words(const char *input, char *output, size_t out_size) {
+  //check to make sure that input exists and output buffer is more than 0 
   if (!input || !output || out_size == 0) return 0;
 
+  // make a copy of the input because it will need to be manipulated 
   char temp[strlen(input) + 1];
   strcpy(temp, input);
 
-  #define MAX_WORDS 100
+  // create array to store the words from strtok. 
+  const int MAX_WORDS  = 100;
   char *words[MAX_WORDS];
   int word_count = 0;
 
